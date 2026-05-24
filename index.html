@@ -5,38 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MealMuse | Premium AI Nutrition Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,900;1,600;1,900&family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              lavender: '#BFA6FF',
-              blush: '#F8CFE1',
-              butter: '#FFE4A8',
-              neutralDark: '#1A1A1A',
-              softGray: '#7A7A7A',
-              bgOffWhite: '#F7F7F7',
+              cream: '#FAF8F4',
+              blush: '#F8EEF1',
+              lavender: '#B8A3FF',
+              matcha: '#CFE6C8',
+              butter: '#FFE8A3',
+              dark: '#1B1B1B',
+              slateText: '#6F6F6F',
+              borderSep: '#ECE8E2'
             },
-            borderRadius: { '3xl': '30px', '4xl': '40px' },
-            boxShadow: {
-              'premium': '0 20px 50px -12px rgba(0, 0, 0, 0.05)',
-              'float': '0 30px 60px -12px rgba(191, 166, 255, 0.15)',
-            }
+            borderRadius: { '3xl': '24px', '4xl': '32px', '5xl': '48px' },
+            boxShadow: { 'luxury': '0 20px 50px -12px rgba(27, 27, 27, 0.05)', 'float': '0 30px 60px -12px rgba(184, 163, 255, 0.15)' }
           }
         }
       }
     </script>
     <style>
-      body { font-family: 'Inter', sans-serif; background-color: #F7F7F7; color: #1A1A1A; -webkit-font-smoothing: antialiased; }
-      h1, h2, h3, h4 { font-family: 'Sora', sans-serif; letter-spacing: -0.02em; }
-      .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.4); }
-      .editorial-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
-      .floating { animation: floating 6s ease-in-out infinite; }
-      @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #F7F7F7; }
-      ::-webkit-scrollbar-thumb { background: #BFA6FF; border-radius: 10px; }
+      body { font-family: 'Inter', sans-serif; background-color: #FAF8F4; color: #1B1B1B; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+      .font-editorial { font-family: 'Playfair Display', serif; }
+      .font-ui { font-family: 'Sora', sans-serif; }
+      .glass { background: rgba(250, 248, 244, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(236, 232, 226, 0.5); }
+      .floating { animation: float 6s ease-in-out infinite; }
+      @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+      .hide-scrollbar::-webkit-scrollbar { display: none; }
     </style>
   </head>
   <body>
