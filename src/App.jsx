@@ -6,7 +6,6 @@ import HomePage from './pages/HomePage';
 import GeneratorPage from './pages/GeneratorPage';
 import SavedRecipes from './pages/SavedRecipes';
 import LoginPage from './pages/LoginPage';
-import ShoppingPage from './pages/ShoppingPage';
 import ShopPage from './pages/ShopPage';
 import PricingPage from './pages/PricingPage';
 import AIChatAssistant from './components/AIChatAssistant';
@@ -21,16 +20,16 @@ function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="bg-[#94a37e] p-2.5 rounded-2xl group-hover:rotate-6 transition-transform duration-300 shadow-sm">
+            <div className="bg-[#94a37e] p-2.5 rounded-2xl group-hover:rotate-6 transition-transform shadow-sm">
               <ChefHat className="w-6 h-6 text-white" />
             </div>
-            <span className="text-2xl font-black tracking-tight text-[#4a5d4e]">MealMuse</span>
+            <span className="text-2xl font-black text-[#4a5d4e]">MealMuse</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/generator" className="text-sm font-bold text-slate-600 hover:text-[#94a37e] transition-colors flex items-center gap-1.5"><Sparkles className="w-4 h-4" /> Studio</Link>
-            <Link to="/shop" className="text-sm font-bold text-slate-600 hover:text-[#94a37e] transition-colors flex items-center gap-1.5"><Store className="w-4 h-4" /> Boutique</Link>
-            <Link to="/saved" className="text-sm font-bold text-slate-600 hover:text-[#94a37e] transition-colors flex items-center gap-1.5"><Heart className="w-4 h-4" /> Cookbook</Link>
+            <Link to="/generator" className="text-sm font-bold text-slate-600 hover:text-[#94a37e] flex items-center gap-1.5"><Sparkles className="w-4 h-4" /> Studio</Link>
+            <Link to="/shop" className="text-sm font-bold text-slate-600 hover:text-[#94a37e] flex items-center gap-1.5"><Store className="w-4 h-4" /> Boutique</Link>
+            <Link to="/saved" className="text-sm font-bold text-slate-600 hover:text-[#94a37e] flex items-center gap-1.5"><Heart className="w-4 h-4" /> Cookbook</Link>
             
             {subscription !== 'elite' && (
               <Link to="/pricing" className="text-xs font-black bg-amber-100 text-amber-700 px-4 py-2 rounded-full flex items-center gap-1 hover:bg-amber-200 transition-all">
@@ -47,6 +46,10 @@ function Navigation() {
               <Link to="/login" className="bg-[#94a37e] text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-md">Sign In</Link>
             )}
           </div>
+
+          <button className="md:hidden p-2 text-slate-600" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
         </div>
       </div>
     </nav>
@@ -75,4 +78,5 @@ function App() {
     </UserProvider>
   );
 }
+
 export default App;
