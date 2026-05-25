@@ -4,14 +4,8 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [subscription, setSubscription] = useState('free'); // free, plus, elite
+  const [subscription, setSubscription] = useState('free');
   const [savedRecipes, setSavedRecipes] = useState([]);
-  const [preferences, setPreferences] = useState({
-    dietary: [],
-    budget: 50,
-    goals: 'health',
-    pantryMode: false
-  });
 
   useEffect(() => {
     const savedUser = localStorage.getItem('mealmuse_user');
@@ -20,20 +14,14 @@ export const UserProvider = ({ children }) => {
       setUser(parsed);
       setSubscription(parsed.subscription || 'free');
     }
-    
-    const savedRecipesLocal = localStorage.getItem('mealmuse_saved');
-    if (savedRecipesLocal) setSavedRecipes(JSON.parse(savedRecipesLocal));
+    const saved = localStorage.getItem('mealmuse_saved');
+    if (saved) setSavedRecipes(JSON.parse(saved));
   }, []);
 
   const login = (userData) => {
     const userWithSub = { ...userData, subscription: 'free' };
     setUser(userWithSub);
     localStorage.setItem('mealmuse_user', JSON.stringify(userWithSub));
-  };
-
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('mealmuse_user');
   };
 
   const upgradeSubscription = (plan) => {
@@ -46,23 +34,14 @@ export const UserProvider = ({ children }) => {
   const toggleSaveRecipe = (recipe) => {
     setSavedRecipes(prev => {
       const exists = prev.find(r => r.name === recipe.name);
-      let next;
-      if (exists) {
-        next = prev.filter(r => r.name !== recipe.name);
-      } else {
-        next = [...prev, recipe];
-      }
+      const next = exists ? prev.filter(r => r.name !== recipe.name) : [...prev, recipe];
       localStorage.setItem('mealmuse_saved', JSON.stringify(next));
       return next;
     });
   };
 
   return (
-    <UserContext.Provider value={{ 
-      user, login, logout, subscription, 
-      upgradeSubscription, savedRecipes, 
-      toggleSaveRecipe, preferences, setPreferences
-    }}>
+    <UserContext.Provider value={{ user, login, subscription, upgradeSubscription, savedRecipes, toggleSaveRecipe }}>
       {children}
     </UserContext.Provider>
   );
