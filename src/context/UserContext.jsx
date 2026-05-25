@@ -26,9 +26,11 @@ export const UserProvider = ({ children }) => {
 
   const upgradeSubscription = (plan) => {
     setSubscription(plan);
-    const updatedUser = { ...user, subscription: plan };
-    setUser(updatedUser);
-    localStorage.setItem('mealmuse_user', JSON.stringify(updatedUser));
+    if (user) {
+      const updatedUser = { ...user, subscription: plan };
+      setUser(updatedUser);
+      localStorage.setItem('mealmuse_user', JSON.stringify(updatedUser));
+    }
   };
 
   const toggleSaveRecipe = (recipe) => {
